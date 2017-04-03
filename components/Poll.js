@@ -33,6 +33,10 @@ const choices = [
 const votersCount = 2;
 
 export default class Poll extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { showText: true };
+  }
 
   onPressChoice(choice) {
     console.log(choice);
