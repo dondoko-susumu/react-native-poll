@@ -35,8 +35,20 @@ const votersCount = 2;
 export default class Poll extends Component {
   constructor(props) {
     super(props);
-    this.state = { showText: true };
+    this.state = { votes: [], user: '' };
   }
+
+  static propTypes = {
+    style: PropTypes.any,
+    choices: PropTypes.array,
+    user: PropTypes.string,
+  };
+
+  static defaultProps = {
+    style: {},
+    choices: [],
+    user: '',
+  };
 
   onPressChoice(choice) {
     console.log(choice);
@@ -48,6 +60,11 @@ export default class Poll extends Component {
   }
 
   render() {
+    const {
+      choices,
+      user,
+    } = this.props;
+
     const screenWidth = Dimensions.get('window').width;
     let graphWidth;
     if (Platform.OS === 'ios') {
